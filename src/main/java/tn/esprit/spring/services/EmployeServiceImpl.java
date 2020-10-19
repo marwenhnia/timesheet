@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 
 import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.entities.Departement;
@@ -30,7 +33,7 @@ public class EmployeServiceImpl implements IEmployeService {
 	ContratRepository contratRepoistory;
 	@Autowired
 	TimesheetRepository timesheetRepository;
-
+	public static final Logger l=LogManager.getLogger(EmployeServiceImpl.class);
 	@Override
 	public Employe authenticate(String login, String password) {
 		return employeRepository.getEmployeByEmailAndPassword(login, password);
@@ -45,8 +48,13 @@ public class EmployeServiceImpl implements IEmployeService {
 
 	public void mettreAjourEmailByEmployeId(String email, int employeId) {
 		Employe employe = employeRepository.findById(employeId).get();
+		l.info("add or************************************************************************** "+employe);
+
 		employe.setEmail(email);
 		employeRepository.save(employe);
+		l.info("fin add"+employe);
+
+		System.err.println("ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg");
 
 	}
 
