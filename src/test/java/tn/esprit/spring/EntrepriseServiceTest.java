@@ -12,10 +12,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import tn.esprit.spring.entities.Departement;
-import tn.esprit.spring.entities.Employe;
+
 import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.repository.DepartementRepository;
-import tn.esprit.spring.services.IEmployeService;
+
 import tn.esprit.spring.services.IEntrepriseService;
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -61,7 +61,7 @@ public class EntrepriseServiceTest {
 		 es.affecterDepartementAEntreprise(d.getId(), ent.getId());
 		
 		 Departement  newDep = deptRepoistory.findById(1).get();
-		int id=ent.getId();
+		
 		Entreprise ee =newDep.getEntreprise();
  
 
