@@ -10,22 +10,21 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
-import org.primefaces.component.spinner.SpinnerRenderer;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.junit.jupiter.api.*;
-import org.junit.*;
+
+
 import org.springframework.test.context.junit4.SpringRunner;
 import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Employe;
-import tn.esprit.spring.entities.Entreprise;
-import tn.esprit.spring.entities.Mission;
+
+
 import tn.esprit.spring.entities.MissionExterne;
 import tn.esprit.spring.entities.Role;
 import tn.esprit.spring.entities.Timesheet;
-import tn.esprit.spring.services.EmployeServiceImpl;
+
 import tn.esprit.spring.services.IContratService;
 import tn.esprit.spring.services.IDepartementService;
 import tn.esprit.spring.services.IEmployeService;
@@ -40,17 +39,17 @@ public class EmployeServiceTest {
 	IDepartementService ds;
 	@Autowired
 	IContratService cs;
-	/*
+	
 	@Test
 	public void testmettreAjourEmailByEmployeId() { 
 		String mail="marwen.hnia12@gmail.com";
 		int id=1;
-		Employe e=new Employe();
+		
 		 es.mettreAjourEmailByEmployeId(mail,id);
 		 assertEquals("marwen.hnia12@gmail.com",mail );		
-	}*/
+	}
 	
-	/*
+	
 	@Test
 	public void testaffecterEmployeADepartement() {
 		List<Employe>le= es.getAllEmployes();
@@ -60,8 +59,8 @@ public class EmployeServiceTest {
 		 es.affecterEmployeADepartement(e, l1);
 		 	assertEquals(l1, 2);
 		
-	}*/
-	/*
+	}
+	
 	@Test
 	public void testdesaffecterEmployeDuDepartement() {
 		List<Employe>le= es.getAllEmployes();
@@ -70,10 +69,10 @@ public class EmployeServiceTest {
 		int l1= l.get(0).getId();
 		 es.desaffecterEmployeDuDepartement(e, l1);
 		 	assertEquals(1, e);
-	}*/
+	}
 	
 	
-/*	
+	
 	@Test
 	public void testAjouteContrat() throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -82,9 +81,9 @@ public class EmployeServiceTest {
 		 es.ajouterContrat(c);
 		assertEquals(c.getTypeContrat(), "CDI");
 			
-	}*/
+	}
 	
-	/*
+	
 	@Test
 	public void testAffecteContratAEmploye() throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -96,10 +95,10 @@ public class EmployeServiceTest {
 		 System.out.println("l id est "+e.getId());
 		 es.affecterContratAEmploye(c.getReference(),e.getId());
 		 assertEquals(c.getReference(),15);
-	}*/
+	}
 	
 	
-	/*
+	
 	@Test
 	public void testdesAffecteContratAEmploye() throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -111,16 +110,16 @@ public class EmployeServiceTest {
 		 System.out.println("l id est "+e.getId());
 		 es.affecterContratAEmploye(c.getReference(),e.getId());
 		 assertEquals(c.getReference(),15);
-	}*/
+	}
 	
-	/*
+	
 	@Test
 	public void testgetEmployePrenomById() {
 		
 	String s=	es.getEmployePrenomById(1);
 		assertEquals("marwen", s);
-	}*/
-	/*
+	}
+	
 	@Test 
 	public void testdeleteEmployeById() {
 		List<Employe>le= es.getAllEmployes();
@@ -128,66 +127,66 @@ public class EmployeServiceTest {
 		System.out.println("l id "+e);
 	     es.deleteEmployeById(e);
 		assertEquals(1,e);
-	}*/
-	/*
+	}
+	
 	@Test()
 	public void testdeleteContratById() {
 		List<Contrat>lc= cs.getAllContrats();
 		int c=lc.get(0).getReference();
 	     es.deleteEmployeById(c);
 		assertEquals(9,c);
-	}*/
-	/*
+	}
+	
 	@Test
 	public void testgetNombreEmployeJPQL() {
 		int nb=es.getNombreEmployeJPQL();
 		assertEquals(1, nb);
-	}*/
-	/*
+	}
+	
 	@Test
 	public void testgetAllEmployeNamesJPQL() {
 		List<String> listempname = es.getAllEmployeNamesJPQL();
 		assertEquals(1, listempname.size());
-	}*/
-	/*@Test
+	}
+	@Test
 	public void testgetAllEmployeByEntreprise() {
-		je ne sais comment faire avec junit relation entre 4 table
-	}*/
+		
+	}
 	
-	/*
+	
 	@Test
 	public void testmettreAjourEmailByEmployeIdJPQL() { 
 		String mail="marwen.hnia11@gmail.com";
 		int id=1;
-		Employe e=new Employe();
+		
 		 es.mettreAjourEmailByEmployeId(mail,id);
 		 assertEquals("marwen.hnia11@gmail.com",mail );		
-	}*/
-/*	
+	}
+
 	@Test
 	public void testdeleteAllContratJPQL() {
 		
 	    es.deleteAllContratJPQL();
 		
-	}*/
-	/*
+	}
+	
 	@Test
 	public void testgetSalaireByEmployeIdJPQL() {
 		double sal=es.getSalaireByEmployeIdJPQL(1);
 		assertEquals(800f, sal);
-	}*/
-	/*
+	}
+	
 	@Test
 	public void testgetSalaireMoyenByDepartementId() {
 		
-	}*/
-	/*
+	}
+	
 	@Test 
 	public void testgetAllEmployes() {
 		List<Employe> listemp=es.getAllEmployes();
 		assertEquals(1, listemp.size());
-	}*/
-	/*
+	}
+	
 	@Test
 	public void testgetTimesheetsByMissionAndDat() throws ParseException{
 		Employe e=new Employe("marwen","hnia","marwen.hnia@gmail.com","123",false,Role.CHEF_DEPARTEMENT);
@@ -198,7 +197,7 @@ public class EmployeServiceTest {
 		Date d1 = dateFormat1.parse("2020-10-14");
 		List<Timesheet>listTime=es.getTimesheetsByMissionAndDate(e, m, d, d1);
 		assertEquals(1, listTime.size());
-	}*/
+	}
 	
 	
 	
