@@ -46,8 +46,8 @@ int  newMissionID = ts.ajouterMission(m);
 	public void ajouterTimesheetTest() throws ParseException {
 		Mission m = new Mission("name","desc");
 		m.setId(1);
-  Employe e = new Employe("ramzi","nc","newEmail","123",false,Role.CHEF_DEPARTEMENT);
-  e.setId(1);
+        Employe e = new Employe("mustapha","majed", "mustaphamajed@esprit.tn", "mustapha" ,false ,Role.CHEF_DEPARTEMENT);
+        e.setId(1);
 		Timesheet timesheet= new Timesheet();
 		timesheet.setEmploye(e);
 		timesheet.setMission(m);
@@ -55,12 +55,10 @@ int  newMissionID = ts.ajouterMission(m);
 		timesheet.setValide(false);
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date dateDebut = dateFormat.parse("2015-03-23");
-		Date dateFin = dateFormat.parse("2015-03-23");
-
-		
+		Date dateFin = dateFormat.parse("2016-03-23");
 
 		ts.ajouterTimesheet(m.getId(), e.getId(), dateDebut, dateFin);
-		assertEquals(1, 1);
+		assertEquals(m.getId() , e.getId());
 		
 	}
 	@Test

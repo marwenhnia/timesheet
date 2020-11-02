@@ -15,24 +15,24 @@ public interface IEmployeService {
 	public Employe authenticate(String login, String password) ;
 	 
 	
-	public void mettreAjourEmailByEmployeId( String email,int employeId);
-	public void affecterEmployeADepartement(int employeId, int depId);
-	public void desaffecterEmployeDuDepartement(int employeId, int depId);
-	public int ajouterContrat(Contrat contrat);
-	public void affecterContratAEmploye(int contratId, int employeId);
-	public String getEmployePrenomById(int employeId);
-	public void deleteEmployeById(int employeId);
-	public void deleteContratById(int contratId);
-	public int getNombreEmployeJPQL();
-	public List<String> getAllEmployeNamesJPQL();
-	public List<Employe> getAllEmployeByEntreprise(Entreprise entreprise);
-	public void mettreAjourEmailByEmployeIdJPQL(String email, int employeId);
-	public void deleteAllContratJPQL();
-	public float getSalaireByEmployeIdJPQL(int employeId);
-	public Double getSalaireMoyenByDepartementId(int departementId);
-	public List<Employe> getAllEmployes();
+	public void mettreAjourEmailByEmployeId( String email,int employeId);//done
+	public void affecterEmployeADepartement(int employeId, int depId);//done
+	public void desaffecterEmployeDuDepartement(int employeId, int depId);//done
+	public int ajouterContrat(Contrat contrat);//done
+	public void affecterContratAEmploye(int contratId, int employeId);//done
+	public String getEmployePrenomById(int employeId);//done
+	public void deleteEmployeById(int employeId);//no
+	public void deleteContratById(int contratId);//no
+	public int getNombreEmployeJPQL();//done
+	public List<String> getAllEmployeNamesJPQL();//done
+	public List<Employe> getAllEmployeByEntreprise(Entreprise entreprise);//no
+	public void mettreAjourEmailByEmployeIdJPQL(String email, int employeId);//done
+	public void deleteAllContratJPQL();//done
+	public float getSalaireByEmployeIdJPQL(int employeId);//done
+	public Double getSalaireMoyenByDepartementId(int departementId);//i dont know
+	public List<Employe> getAllEmployes();//done
 	public List<Timesheet> getTimesheetsByMissionAndDate(Employe employe, Mission mission, 
-	Date dateDebut, Date dateFin);
+	Date dateDebut, Date dateFin);//no
 
 	int addOrUpdateEmploye(Employe employe);
 	

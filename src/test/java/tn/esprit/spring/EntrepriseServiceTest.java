@@ -1,4 +1,5 @@
 package tn.esprit.spring;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.text.ParseException;
@@ -15,6 +16,8 @@ import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.services.IEmployeService;
 import tn.esprit.spring.services.IEntrepriseService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 @SpringBootTest
 public class EntrepriseServiceTest {
 	@Autowired
@@ -120,6 +123,4 @@ assertEquals(depNamesA, depNamesE);
 	}
 	
 	
-	
-
 }

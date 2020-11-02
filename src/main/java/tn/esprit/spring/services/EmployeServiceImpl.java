@@ -41,30 +41,33 @@ public class EmployeServiceImpl implements IEmployeService {
 
 	@Override
 	public int addOrUpdateEmploye(Employe employe) {
+		l.info("In  addOrUpdateEmploye : ");
 		employeRepository.save(employe);
+		l.info("Out  addOrUpdateEmploye : ");
 		return employe.getId();
 	}
 
 
 	public void mettreAjourEmailByEmployeId(String email, int employeId) {
 		Employe employe = employeRepository.findById(employeId).get();
-		l.info("add or************************************************************************** "+employe);
+		l.info("In  mettreAjourEmailByEmployeId : ");
 
 		employe.setEmail(email);
 		employeRepository.save(employe);
-		l.info("fin add"+employe);
+		l.info(" Out mettreAjourEmailByEmployeId");
 
-		System.err.println("ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg");
+		
 
 	}
 
 	@Transactional	
 	public void affecterEmployeADepartement(int employeId, int depId) {
+		l.info("In  affecterEmployeADepartement : ");
 		Departement depManagedEntity = deptRepoistory.findById(depId).get();
 		Employe employeManagedEntity = employeRepository.findById(employeId).get();
 
 		if(depManagedEntity.getEmployes() == null){
-
+			l.debug("Employe : "+depManagedEntity.getEmployes());
 			List<Employe> employes = new ArrayList<>();
 			employes.add(employeManagedEntity);
 			depManagedEntity.setEmployes(employes);
@@ -75,60 +78,76 @@ public class EmployeServiceImpl implements IEmployeService {
 
 		// à ajouter? 
 		deptRepoistory.save(depManagedEntity); 
+		l.info("Out  affecterEmployeADepartement : ");
 
 	}
 	@Transactional
 	public void desaffecterEmployeDuDepartement(int employeId, int depId)
 	{
+		l.info("In  desaffecterEmployeDuDepartement : ");
 		Departement dep = deptRepoistory.findById(depId).get();
 
 		int employeNb = dep.getEmployes().size();
 		for(int index = 0; index < employeNb; index++){
+			l.debug("index +++ : " + index);
 			if(dep.getEmployes().get(index).getId() == employeId){
 				dep.getEmployes().remove(index);
 				break;//a revoir
 			}
 		}
+		l.info("Out  desaffecterEmployeDuDepartement : ");
+		
 	} 
 	
 	// Tablesapce (espace disque) 
 
 	public int ajouterContrat(Contrat contrat) {
+		l.info("In  ajouterContrat : " + contrat); 
 		contratRepoistory.save(contrat);
+		l.info("Out of  ajouterContrat  " ); 
 		return contrat.getReference();
 	}
 
 	public void affecterContratAEmploye(int contratId, int employeId) {
+		l.info("In  affecterContratAEmploye : " + contratId+ "" + employeId);
 		Contrat contratManagedEntity = contratRepoistory.findById(contratId).get();
 		Employe employeManagedEntity = employeRepository.findById(employeId).get();
 
 		contratManagedEntity.setEmploye(employeManagedEntity);
+		l.info("Out  affecterContratAEmploye" );
 		contratRepoistory.save(contratManagedEntity);
 
 	}
 
 	public String getEmployePrenomById(int employeId) {
+		l.info("In  getEmployePrenomById : "  + employeId);
 		Employe employeManagedEntity = employeRepository.findById(employeId).get();
+		l.info("Out  getEmployePrenomById : "  + employeId);
 		return employeManagedEntity.getPrenom();
 	}
 	 
 	public void deleteEmployeById(int employeId)
 	{
+		l.info("In  deleteEmployeById : "  + employeId);
 		Employe employe = employeRepository.findById(employeId).get();
 
 		//Desaffecter l'employe de tous les departements
 		//c'est le bout master qui permet de mettre a jour
 		//la table d'association
 		for(Departement dep : employe.getDepartements()){
+			l.debug("dep +++"+dep);
 			dep.getEmployes().remove(employe);
 		}
 
 		employeRepository.delete(employe);
+		l.info("Out  deleteEmployeById : " );
 	}
 
 	public void deleteContratById(int contratId) {
+		l.info("In  deleteContratById : "  + contratId);
 		Contrat contratManagedEntity = contratRepoistory.findById(contratId).get();
 		contratRepoistory.delete(contratManagedEntity);
+		l.info("Out  deleteContratById : "  );
 
 	}
 
