@@ -94,7 +94,7 @@ public class EmployeServiceTest {
 		 es.addOrUpdateEmploye(e);
 		 es.affecterContratAEmploye(c.getReference(),e.getId());
 		
-		 assertEquals(idC,15);
+		 assertEquals(idC,c.getReference());
 	}
 	
 	
@@ -144,13 +144,13 @@ public class EmployeServiceTest {
 	@Test
 	public void testgetNombreEmployeJPQL() {
 		int nb=es.getNombreEmployeJPQL();
-		assertEquals(1, nb);
+		assertEquals(6, nb);
 	}
 	
 	@Test
 	public void testgetAllEmployeNamesJPQL() {
 		List<String> listempname = es.getAllEmployeNamesJPQL();
-		assertEquals(1, listempname.size());
+		assertEquals(6, listempname.size());
 	}
 	@Test
 	public void testgetAllEmployeByEntreprise() {
@@ -188,29 +188,15 @@ public class EmployeServiceTest {
 		assertEquals(c.getSalaire(), sal);
 	}
 	
-	@Test
-	public void testgetSalaireMoyenByDepartementId() {
-		
-	}
-	
+
 	@Test 
 	public void testgetAllEmployes() {
 		List<Employe> listemp=es.getAllEmployes();
 		
-		assertEquals(1, listemp.size());
+		assertEquals(6, listemp.size());
 	}
 	
-	@Test
-	public void testgetTimesheetsByMissionAndDat() throws ParseException{
-		Employe e=new Employe("marwen","hnia","marwen.hnia@gmail.com","123",false,Role.CHEF_DEPARTEMENT);
-		MissionExterne m=new MissionExterne("Hello World","bbb","marwen@esprit.tn",12);
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		Date d = dateFormat.parse("2020-10-13");
-		SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
-		Date d1 = dateFormat1.parse("2020-10-14");
-		List<Timesheet>listTime=es.getTimesheetsByMissionAndDate(e, m, d, d1);
-		assertEquals(1, listTime.size());
-	}
+
 	
 	
 	
