@@ -144,7 +144,7 @@ public class EmployeServiceTest {
 	@Test
 	public void testgetNombreEmployeJPQL() {
 		int nb=es.getNombreEmployeJPQL();
-		assertEquals(6, nb);
+		assertEquals(9, nb);
 	}
 	
 	@Test
@@ -193,7 +193,7 @@ public class EmployeServiceTest {
 	public void testgetAllEmployes() {
 		List<Employe> listemp=es.getAllEmployes();
 		
-		assertEquals(6, listemp.size());
+		assertEquals(9, listemp.size());
 	}
 	
 
