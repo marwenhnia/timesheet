@@ -144,15 +144,18 @@ public class EmployeServiceTest {
 	@Test
 	public void testgetNombreEmployeJPQL() {
 		int nb=es.getNombreEmployeJPQL();
-		assertEquals(9, nb);
+		List<Employe> listemp=es.getAllEmployes();
+
+		assertEquals(listemp.size(), nb);
 	}
 	
 	@Test
 	public void testgetAllEmployeNamesJPQL() {
 		List<String> listempname = es.getAllEmployeNamesJPQL();
 		Employe e=new Employe( "khalil1", "sfar1", "khalil.sfar@esprit.tn", "1234",  true, Role.CHEF_DEPARTEMENT);
-		int ide=	es.addOrUpdateEmploye(e);
-		assertEquals(listempname.size()+1, listempname.size());
+			es.addOrUpdateEmploye(e);
+		List<Employe>listemp1=es.getAllEmployes();
+		assertEquals(listemp1.size(), listempname.size()+1);
 	}
 	@Test
 	public void testgetAllEmployeByEntreprise() {
@@ -194,10 +197,14 @@ public class EmployeServiceTest {
 	@Test 
 	public void testgetAllEmployes() {
 		List<Employe> listemp=es.getAllEmployes();
+		System.err.println(listemp.size());
 		Employe e=new Employe( "khalil1", "sfar1", "khalil.sfar@esprit.tn", "1234",  true, Role.CHEF_DEPARTEMENT);
-	int ide=	es.addOrUpdateEmploye(e);
-		
-		assertEquals(listemp.size()+1, listemp.size());
+	  	es.addOrUpdateEmploye(e);
+	
+	  	List<Employe> listemp1=es.getAllEmployes();
+		System.err.println(listemp1.size());
+
+		assertEquals(listemp1.size(), listemp.size()+1);
 	}
 	
 
