@@ -152,7 +152,7 @@ public class EmployeServiceTest {
 		List<String> listempname = es.getAllEmployeNamesJPQL();
 		Employe e=new Employe( "khalil1", "sfar1", "khalil.sfar@esprit.tn", "1234",  true, Role.CHEF_DEPARTEMENT);
 		int ide=	es.addOrUpdateEmploye(e);
-		assertEquals(ide+1, listempname.size());
+		assertEquals(listempname.size()+1, listempname.size());
 	}
 	@Test
 	public void testgetAllEmployeByEntreprise() {
@@ -197,7 +197,7 @@ public class EmployeServiceTest {
 		Employe e=new Employe( "khalil1", "sfar1", "khalil.sfar@esprit.tn", "1234",  true, Role.CHEF_DEPARTEMENT);
 	int ide=	es.addOrUpdateEmploye(e);
 		
-		assertEquals(ide+1, listemp.size());
+		assertEquals(listemp.size()+1, listemp.size());
 	}
 	
 
