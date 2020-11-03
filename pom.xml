@@ -80,6 +80,7 @@
 			<artifactId>rewrite-integration-faces</artifactId>
 			<version>3.4.1.Final</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.ocpsoft.rewrite</groupId>
 			<artifactId>rewrite-config-prettyfaces</artifactId>
@@ -93,7 +94,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.16.16</version>
+			<version>1.18.10</version>
 		</dependency>
 		<!-- JSF -->
 
