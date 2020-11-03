@@ -1,37 +1,19 @@
 package tn.esprit.spring;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 
-import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.primefaces.component.spinner.SpinnerRenderer;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.junit.jupiter.api.*;
-import org.junit.*;
-import org.springframework.test.context.junit4.SpringRunner;
-import tn.esprit.spring.entities.Contrat;
-import tn.esprit.spring.entities.Departement;
-import tn.esprit.spring.entities.Employe;
-import tn.esprit.spring.entities.Entreprise;
-import tn.esprit.spring.entities.Mission;
-import tn.esprit.spring.entities.MissionExterne;
-import tn.esprit.spring.entities.Role;
-import tn.esprit.spring.entities.Timesheet;
-import tn.esprit.spring.services.EmployeServiceImpl;
+
+
 import tn.esprit.spring.services.IContratService;
 import tn.esprit.spring.services.IDepartementService;
 import tn.esprit.spring.services.IEmployeService;
 
 @SpringBootTest
-@RunWith(SpringRunner.class)
+
 public class EmployeServiceTest {
 	
 	@Autowired
