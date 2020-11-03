@@ -4,8 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,28 +33,28 @@ public class TimesheetServiceImpl implements ITimesheetService {
 	@Autowired
 	EmployeRepository employeRepository;
 	
-	public static final Logger l=LogManager.getLogger(TimesheetServiceImpl.class);
+
 	
 	
 	public int ajouterMission(Mission mission) {
-		l.info("In  ajouterMission : " + mission); 
+	 
 		missionRepository.save(mission);
-		l.info("Out of  ajouterMission  " ); 
+	
 		return mission.getId();
 	}
     
 	public void affecterMissionADepartement(int missionId, int depId) {
-		l.info("In  affecterMissionADep : " + missionId+ "" + depId);
+	
 		Mission mission = missionRepository.findById(missionId).get();
 		Departement dep = deptRepoistory.findById(depId).get();
 		mission.setDepartement(dep);
-		l.info("Out  affecterMissionADep" );
+		
 		missionRepository.save(mission);
 		
 	}
 
 	public void ajouterTimesheet(int missionId, int employeId, Date dateDebut, Date dateFin) {
-		l.info("In  ajouterTimesheet : " + missionId+ "" +employeId+""+dateDebut+""+dateFin);
+		
 		TimesheetPK timesheetPK = new TimesheetPK();
 		timesheetPK.setDateDebut(dateDebut);
 		timesheetPK.setDateFin(dateFin);
@@ -67,13 +66,13 @@ public class TimesheetServiceImpl implements ITimesheetService {
 		timesheet.setValide(false); //par defaut non valide
 		 
 		timesheetRepository.save(timesheet);
-		l.info("Out of  ajouterTimesheet  " );
+		
 		
 	}
 
 	
 	public void validerTimesheet(int missionId, int employeId, Date dateDebut, Date dateFin, int validateurId) {
-		System.out.println("In valider Timesheet");
+	
 		Employe validateur = employeRepository.findById(validateurId).get();
 		Mission mission = missionRepository.findById(missionId).get();
 		//verifier s'il est un chef de departement (interet des enum)

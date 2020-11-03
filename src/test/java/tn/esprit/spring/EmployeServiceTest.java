@@ -1,7 +1,7 @@
 package tn.esprit.spring;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -89,12 +89,12 @@ public class EmployeServiceTest {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date d = dateFormat.parse("2015-03-23");
 		Contrat c=new Contrat(d,"CDI",900.0f);
-		 es.ajouterContrat(c);
+		int idC= es.ajouterContrat(c);
 		 Employe e=new Employe( "khalil", "sfar", "khalil.sfar@esprit.tn", "123",  true, Role.ADMINISTRATEUR);
 		 es.addOrUpdateEmploye(e);
-		 System.out.println("l id est "+e.getId());
 		 es.affecterContratAEmploye(c.getReference(),e.getId());
-		 assertEquals(c.getReference(),15);
+		
+		 assertEquals(idC,15);
 	}
 	
 	
@@ -104,12 +104,12 @@ public class EmployeServiceTest {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date d = dateFormat.parse("2015-03-23");
 		Contrat c=new Contrat(d,"CDI",900.0f);
-		 es.ajouterContrat(c);
+		int idC= es.ajouterContrat(c);
 		 Employe e=new Employe( "khalil", "sfar", "khalil.sfar@esprit.tn", "123",  true, Role.ADMINISTRATEUR);
 		 es.addOrUpdateEmploye(e);
 		 System.out.println("l id est "+e.getId());
 		 es.affecterContratAEmploye(c.getReference(),e.getId());
-		 assertEquals(c.getReference(),15);
+		 assertEquals(c.getReference(),idC);
 	}
 	
 	
@@ -119,22 +119,26 @@ public class EmployeServiceTest {
 	String s=	es.getEmployePrenomById(1);
 		assertEquals("marwen", s);
 	}
-	
+	/*
 	@Test 
 	public void testdeleteEmployeById() {
 		List<Employe>le= es.getAllEmployes();
 		int e=le.get(0).getId();
-		System.out.println("l id "+e);
 	     es.deleteEmployeById(e);
-		assertEquals(1,e);
+	     le= es.getAllEmployes();
+		int e2=le.get(0).getId();
+
+		assertNotEquals(e2,e);
 	}
-	
+	*/
 	@Test()
 	public void testdeleteContratById() {
 		List<Contrat>lc= cs.getAllContrats();
 		int c=lc.get(0).getReference();
-	     es.deleteEmployeById(c);
-		assertEquals(9,c);
+	     es.deleteContratById(c);
+	     lc= cs.getAllContrats();
+	     int c2=lc.get(0).getReference();
+		assertNotEquals(c2,c);
 	}
 	
 	@Test
@@ -171,9 +175,17 @@ public class EmployeServiceTest {
 	}
 	
 	@Test
-	public void testgetSalaireByEmployeIdJPQL() {
-		double sal=es.getSalaireByEmployeIdJPQL(1);
-		assertEquals(800f, sal);
+	public void testgetSalaireByEmployeIdJPQL() throws ParseException {
+		 
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date d = dateFormat.parse("2015-03-23");
+		Contrat c=new Contrat(d,"CDI",900.0f);
+		int idC= es.ajouterContrat(c);
+		 Employe e=new Employe( "khalil", "sfar", "khalil.sfar@esprit.tn", "123",  true, Role.ADMINISTRATEUR);
+		 int idE=es.addOrUpdateEmploye(e);
+		 es.affecterContratAEmploye(c.getReference(),e.getId());		 
+		double sal=es.getSalaireByEmployeIdJPQL(idE);
+		assertEquals(c.getSalaire(), sal);
 	}
 	
 	@Test
@@ -184,6 +196,7 @@ public class EmployeServiceTest {
 	@Test 
 	public void testgetAllEmployes() {
 		List<Employe> listemp=es.getAllEmployes();
+		
 		assertEquals(1, listemp.size());
 	}
 	
