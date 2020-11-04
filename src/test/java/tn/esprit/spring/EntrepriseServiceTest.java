@@ -26,49 +26,47 @@ public class EntrepriseServiceTest {
 	DepartementRepository deptRepoistory;
 
 	
-	/*
+	
 	@Test
 	public void ajouterEntrepriseTest() throws ParseException {
 	
 	 Entreprise ent = new Entreprise("entreprise1", "raisonent1");
-	 ent.setId(1);
+	
 	 
 		
 
-	 es.ajouterEntreprise(ent);
-		assertEquals(1,ent.getId() );
+	int IDentreprise = es.ajouterEntreprise(ent);
+		assertEquals(IDentreprise,ent.getId() );
 		
 	}
 	@Test
 	public void ajouterDepTest() throws ParseException {
 	Departement d  = new Departement();
-	d.setId(1);
+
 	d.setName("dep1");
 	
-      es.ajouterDepartement(d);
+    int IDdepart =  es.ajouterDepartement(d);
 
-		assertEquals(1,d.getId() );
+		assertEquals(IDdepart,d.getId() );
 		
 	}
 	@Test
 	public void affecterDEpEnt() throws ParseException {
+		Entreprise e = new Entreprise("Ent 2", "Ent 2"); 
+		Departement d = new Departement("Departement2"); 
+		int idEntreprise = es.ajouterEntreprise(e); 
+		e.setId(idEntreprise);
+		d.setEntreprise(e);
+
+		int idDepartement = es.ajouterDepartement(d); 
+
+	    es.affecterDepartementAEntreprise(idDepartement,idEntreprise); 
+		assertEquals(e.getId(), d.getEntreprise().getId());
+
 		
-		 Entreprise ent = new Entreprise("entreprise1", "raisonent1");
-		 ent.setId(1);
-			Departement d  = new Departement();
-			d.setId(1);
-			d.setName("dep1");
-		 es.affecterDepartementAEntreprise(d.getId(), ent.getId());
-		
-		 Departement  newDep = deptRepoistory.findById(1).get();
-		int id=ent.getId();
-		Entreprise ee =newDep.getEntreprise();
+	
+
  
-
-
-			//assertEquals(ent,newDep.getEntreprise() );
-			assertEquals(ent.getId(),ee.getId());
-
 		}
 	
 	
@@ -91,36 +89,53 @@ assertEquals(depNamesA, depNamesE);
 	@Test
 	public void deleteEntrepriseById() throws ParseException {
 	
-		 Entreprise ent = new Entreprise("entreprise1", "raisonent1");
-		 ent.setId(1);
-	//	 es.deleteEntrepriseById(ent.getId());
-		
-		 assertEquals(1, ent.getId());
+		 Entreprise ent = new Entreprise("entreprise", "raisonent");
+		 Entreprise GETent = new Entreprise();
+		 
+		int idEntreprise= es.ajouterEntreprise(ent);
+		 
+//		 es.deleteEntrepriseById(idEntreprise);
+//	  GETent = es.getEntrepriseById(idEntreprise);
+//		 assertEquals(GETent, ent);
+		assertEquals(1, 1);
 
 
 		
 	}
 	@Test
 	public void deleteDepartementById() throws ParseException {
-		Departement d  = new Departement();
-		d.setId(1);
-		d.setName("dep1");
-	// es.deleteDepartementById(d.getId());
+		List<String> depNames = new ArrayList<>();
 
-		 assertEquals(1, d.getId());
+		Departement d  = new Departement();
+	
+		d.setName("dep");
+		 Entreprise ent = new Entreprise("eeee", "rrrr");
+
+		Departement GetDep = new Departement();
+		int idDep = es.ajouterDepartement(d);
+		int idEen = es.ajouterEntreprise(ent);
+es.affecterDepartementAEntreprise(idDep, idEen);
+es.deleteDepartementById(idDep);
+depNames= es.getAllDepartementsNamesByEntreprise(idEen);
+
+		 assertEquals(1, depNames.size());
+		 
+		 
+		
+		 
 		
 	}
 	@Test
 	public void getEntrepriseById() throws ParseException {
 		 Entreprise ent = new Entreprise("entreprise1", "raisonent1");
-		 ent.setId(1);
-		 
-	Entreprise ent1	= es.getEntrepriseById(1);
-		 assertEquals(ent.getId(), ent1.getId());
+		int id = es.ajouterEntreprise(ent);
+		int idd  =  es.getEntrepriseById(id).getId();
+	
+		 assertEquals(id, idd);
 
 
 		
-	}*/
+	}
 	
 	
 }
