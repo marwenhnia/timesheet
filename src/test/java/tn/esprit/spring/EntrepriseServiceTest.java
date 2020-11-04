@@ -25,19 +25,18 @@ public class EntrepriseServiceTest {
 	
 	
 	@Test
-	public void ajouterEntrepriseTest() throws ParseException {
+	public void TestajouterEntreprise() throws ParseException {
 	
 	 Entreprise ent = new Entreprise("entreprise1", "raisonent1");
 	
 	 
-		
 
 	int IDentreprise = es.ajouterEntreprise(ent);
 		assertEquals(IDentreprise,ent.getId() );
 		
 	}
 	@Test
-	public void ajouterDepTest() throws ParseException {
+	public void TestajouterDep() throws ParseException {
 	Departement d  = new Departement();
 
 	d.setName("dep1");
@@ -48,7 +47,7 @@ public class EntrepriseServiceTest {
 		
 	}
 	@Test
-	public void affecterDEpEnt() throws ParseException {
+	public void TestaffecterDEpEnt() throws ParseException {
 		Entreprise e = new Entreprise("Ent 2", "Ent 2"); 
 		Departement d = new Departement("Departement2"); 
 		int idEntreprise = es.ajouterEntreprise(e); 
@@ -68,7 +67,7 @@ public class EntrepriseServiceTest {
 	
 	
 	@Test
-	public void getAllDepartementsNamesByEntrepriseTest() throws ParseException {
+	public void TestgetAllDepartementsNamesByEntreprise() throws ParseException {
 		 Entreprise ent = new Entreprise("entreprise1", "raisonent1");
 		 ent.setId(1);
 		List<String> depNamesA = new ArrayList<>();
@@ -84,7 +83,7 @@ assertEquals(depNamesA, depNamesE);
 		
 	}
 	@Test
-	public void deleteEntrepriseById() throws ParseException {
+	public void TestdeleteEntrepriseById() throws ParseException {
 	
 		 Entreprise ent = new Entreprise("entreprise", "raisonent");
 		 Entreprise GETent = new Entreprise();
@@ -100,7 +99,7 @@ assertEquals(depNamesA, depNamesE);
 		
 	}
 	@Test
-	public void deleteDepartementById() throws ParseException {
+	public void TestdeleteDepartementById() throws ParseException {
 		List<String> depNames = new ArrayList<>();
 
 		Departement d  = new Departement();
@@ -123,7 +122,7 @@ depNames= es.getAllDepartementsNamesByEntreprise(idEen);
 		
 	}
 	@Test
-	public void getEntrepriseById() throws ParseException {
+	public void TestgetEntrepriseById() throws ParseException {
 		 Entreprise ent = new Entreprise("entreprise1", "raisonent1");
 		int id = es.ajouterEntreprise(ent);
 		int idd  =  es.getEntrepriseById(id).getId();
