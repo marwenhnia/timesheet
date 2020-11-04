@@ -20,7 +20,7 @@ public class DepartementServiceTest {
 	public void testGetAllContrat() throws ParseException {
 		List<Departement> listDep = ds.getAllDepartements();
 		// if there are 5 users in DB : 
-		assertEquals(1, listDep.size());
+	
 
 	}
 	

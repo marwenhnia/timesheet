@@ -23,24 +23,25 @@ public class TimeSheetServiceTest {
 	ITimesheetService ts;
 	@Test
 	public void ajouterMissionTest() throws ParseException {
-Mission m = new Mission("name","desc");
-m.setId(1);
+    Mission m = new Mission("name","desc");
+   
 
-int  newMissionID = ts.ajouterMission(m);
+    int  newMissionID = ts.ajouterMission(m);
 	
-		assertEquals(1,newMissionID);
+		assertEquals(m.getId(),newMissionID);
 		
 	}
 	@Test
 	public void affecterMissionADepartementTest() throws ParseException {
-		Mission m = new Mission("name","desc");
-		m.setId(1);
-		Departement d  = new Departement();
-		d.setId(1);
-		d.setName("dep1");
+		Mission m = new Mission("mission1","desc");
+		int id = ts.ajouterMission(m);
+		System.out.println(id);
+		Departement d  = new Departement("dept1");
+	
+	ts.affecterMissionADepartement(id, 1);
 		
-		ts.affecterMissionADepartement(m.getId(), d.getId());
-		assertEquals(1,1);
+		
+		assertEquals(id, m.getId());
 	}
 	@Test
 	public void ajouterTimesheetTest() throws ParseException {
