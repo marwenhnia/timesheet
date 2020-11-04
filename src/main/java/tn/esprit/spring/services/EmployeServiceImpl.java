@@ -105,6 +105,8 @@ public class EmployeServiceImpl implements IEmployeService {
 		l.info("In  ajouterContrat : " + contrat); 
 		contratRepoistory.save(contrat);
 		l.info("Out of  ajouterContrat  " ); 
+		System.err.println("dsgggggggggggggggggggggggggggggggggggggggggggggggggg");
+
 		return contrat.getReference();
 	}
 

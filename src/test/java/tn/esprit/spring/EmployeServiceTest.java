@@ -77,10 +77,11 @@ public class EmployeServiceTest {
 	public void testAjouteContrat() throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date d = dateFormat.parse("2015-03-23");
-		Contrat c=new Contrat(d,"CDI",800.0f);
-		 es.ajouterContrat(c);
-		assertEquals(c.getTypeContrat(), "CDI");
-			
+		Contrat c=new Contrat(d,"trrrrrr",800.0f);
+		int ref = es.ajouterContrat(c);
+		List<Contrat> lc=cs.getAllContrats();
+		int id=lc.get(lc.size()-1).getReference();
+		assertEquals(id, ref);	
 	}
 	
 	
@@ -119,7 +120,7 @@ public class EmployeServiceTest {
 	String s=	es.getEmployePrenomById(1);
 		assertEquals("marwen", s);
 	}
-	/*
+/*	
 	@Test 
 	public void testdeleteEmployeById() {
 		List<Employe>le= es.getAllEmployes();
@@ -130,7 +131,8 @@ public class EmployeServiceTest {
 
 		assertNotEquals(e2,e);
 	}
-	*/
+*/
+	
 	@Test()
 	public void testdeleteContratById() {
 		List<Contrat>lc= cs.getAllContrats();
