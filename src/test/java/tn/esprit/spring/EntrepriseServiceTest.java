@@ -26,7 +26,7 @@ public class EntrepriseServiceTest {
 	DepartementRepository deptRepoistory;
 
 	
-	
+	/*
 	@Test
 	public void ajouterEntrepriseTest() throws ParseException {
 	
@@ -120,7 +120,7 @@ assertEquals(depNamesA, depNamesE);
 
 
 		
-	}
+	}*/
 	
 	
 }

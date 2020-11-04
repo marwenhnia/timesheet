@@ -4,10 +4,13 @@ package tn.esprit.spring;
 
 
 
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-
+import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.services.IContratService;
 import tn.esprit.spring.services.IDepartementService;
 import tn.esprit.spring.services.IEmployeService;
@@ -22,8 +25,8 @@ public class EmployeServiceTest {
 	IDepartementService ds;
 	@Autowired
 	IContratService cs;
-	/*
-	@Test
+	
+	/*@Test
 	public void testmettreAjourEmailByEmployeId() { 
 		String mail="marwen.hnia12@gmail.com";
 		int id=1;

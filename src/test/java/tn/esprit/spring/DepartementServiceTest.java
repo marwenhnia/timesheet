@@ -11,16 +11,26 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.services.IDepartementService;
+import tn.esprit.spring.services.IEntrepriseService;
 
 @SpringBootTest
 public class DepartementServiceTest {
 	@Autowired
 	IDepartementService ds;
+	@Autowired
+	IEntrepriseService es;
 	@Test 
 	public void testGetAllDep() throws ParseException {
-		List<Departement> listDep = ds.getAllDepartements();
+		List<Departement> listDepin = ds.getAllDepartements();
+
+		Departement d  = new Departement();
+		d.setId(5);
+		d.setName("Mobile");
+		
+	      es.ajouterDepartement(d);
+		List<Departement> listDepfin = ds.getAllDepartements();
 		// if there are 5 users in DB : 
-		assertEquals(1, listDep.size());
+		assertEquals(listDepfin.size(), listDepin.size()+1);
 
 	}
 	
